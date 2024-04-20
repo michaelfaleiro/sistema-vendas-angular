@@ -1,1 +1,15 @@
-<p>card-orcamento works!</p>
+<div class="card mb-1" style="width: 14rem; min-height: 10rem">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h5 class="card-title">
+        {{ orcamento.veiculo.nome }}
+      </h5>
+    </div>
+    <h6 class="card-subtitle">{{ orcamento.cliente.nome }}</h6>
+    <p>Status</p>
+    <p class="card-text">Descrição</p>
+    <div>
+      <a href="#" class="btn btn-secondary w-100">Visualizar</a>
+    </div>
+  </div>
+</div>

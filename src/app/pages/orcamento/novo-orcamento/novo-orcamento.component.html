@@ -1,0 +1,174 @@
+<div class="container-fluid">
+  <header class="text-center">
+    <h4>Novo Orçamento</h4>
+  </header>
+  <main class="row" style="height: 95vh">
+    <section class="col border">
+      <h5 class="text-center">Dados do Cliente</h5>
+
+      <div class="row">
+        <div class="col" style="position: relative">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite o Nome ou Telefone"
+            [formControl]="clienteSearch"
+          />
+          <ul
+            class="mx-3 list-group"
+            *ngIf="clientes$ | async as clientes"
+            style="
+              position: absolute;
+              z-index: 1000;
+              top: 100%;
+              left: 0;
+              right: 0;
+            "
+          >
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              aria-current="true"
+              *ngFor="let cliente of clientes"
+              (click)="selecionarCliente(cliente)"
+            >
+              {{ cliente.nome }} - {{ cliente.telefone }}
+            </button>
+            <button
+              *ngIf="clientes.length"
+              type="button"
+              class="list-group-item list-group-item-action"
+              aria-current="true"
+            >
+              Novo Cliente
+            </button>
+          </ul>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col">
+            <label for="nome" class="form-label">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nome"
+              [formControl]="nome"
+            />
+          </div>
+
+          <div class="col">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="telefone"
+              [formControl]="telefone"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="modelo" class="form-label">Carro</label>
+            <select
+              class="form-control"
+              [(ngModel)]="carroSelecionado"
+              name="carroSelecionado"
+              (change)="selecionarCarro($event)"
+            >
+              <option *ngFor="let carro of carros$ | async" [value]="carro.id">
+                {{ carro.nome | titlecase }} - {{ carro.placa | uppercase }}
+              </option>
+              <option value="">Selecione um Carro</option>
+              <!-- Converte o ID para string -->
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="chassi" class="form-label">Chassi</label>
+            <input
+              type="text"
+              class="form-control"
+              id="chassi"
+              [formControl]="chassi"
+              placeholder="Digite o Chassi"
+            />
+          </div>
+
+          <div class="col">
+            <label for="placa" class="form-label">Placa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="placa"
+              [formControl]="placa"
+              placeholder="Digite a Placa"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="ano" class="form-label">Ano</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ano"
+              placeholder="Digite o Ano"
+            />
+          </div>
+
+          <div class="col">
+            <label for="motor" class="form-label">Motor</label>
+            <input
+              type="text"
+              class="form-control"
+              id="motor"
+              placeholder="Digite o Motor"
+            />
+          </div>
+
+          <div class="col mb-2">
+            <label for="combutivel" class="form-label">Combustvel</label>
+            <input
+              type="text"
+              class="form-control"
+              id="combustivel"
+              placeholder="Digite o Combustivel"
+            />
+          </div>
+        </div>
+      </form>
+
+      <section class="row p-1">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>Quant</th>
+              <th>SKU</th>
+              <th>Produto</th>
+              <th>Marca</th>
+              <th>Unitário</th>
+              <th>Total</th>
+              <th>Acões</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>QUATROXQUATRO-D0450</td>
+              <td>Kit de Coxim Batente e Coifa Dianteiro</td>
+              <td>QUATROXQUATRO</td>
+              <td>R$ 45,00</td>
+              <td>R$ 45,00</td>
+              <td>
+                <button class="btn btn-sm btn-info">Editar</button>
+                <button class="btn btn-sm btn-danger">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+</div>

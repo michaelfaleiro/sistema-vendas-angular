@@ -4,6 +4,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MessageService {
+  message: string = '';
+  type: string = 'success';
 
-  constructor() { }
+  constructor() {}
+
+  add(message: string, type: string) {
+    this.message = message;
+    this.type = type;
+    setTimeout(() => {
+      this.clear();
+    }, 2000);
+  }
+
+  clear() {
+    this.message = '';
+    this.type = '';
+  }
 }

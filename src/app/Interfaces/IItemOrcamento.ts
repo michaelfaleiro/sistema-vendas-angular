@@ -1,9 +1,10 @@
-export interface IIteOrcamento {
+export interface IItemOrcamento {
   id: number;
-  orcamentoId: number;
   produtoId: number;
+  sku: string;
+  nome: string;
   quantidade: number;
-  precoVenda: number;
+  precoUnitario: number;
   createdAt: Date;
   updatedAt: Date;
 }

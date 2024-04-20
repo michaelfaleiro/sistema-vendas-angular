@@ -1,1 +1,30 @@
-<p>home-orcamento works!</p>
+<main class="">
+  <div class="row">
+    <header class="text-center">
+      <h1>Orçamentos</h1>
+    </header>
+    <section
+      class="col-10 d-flex gap-1 flex-wrap overflow-auto scrollable-content"
+      style="height: 92vh"
+    >
+      @for(orcamento of orcamentos$ | async; track orcamento.id) {
+      <app-card-orcamento [orcamento]="orcamento" />
+      }
+    </section>
+    <section class="col border p-1">
+      <a class="btn btn-secondary w-100" href="novo-orcamento"
+        >Novo Orçamento</a
+      >
+      <div class="mt-2">
+        <h6 class="text-center">Filtros</h6>
+        <p>Por período</p>
+        <p>Mais Novos</p>
+        <p>Mais Antigos</p>
+        <p>Status</p>
+        <p>Aberto</p>
+        <p>Em Andamento</p>
+        <p>Finalizado</p>
+      </div>
+    </section>
+  </div>
+</main>
